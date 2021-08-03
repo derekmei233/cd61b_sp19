@@ -5,7 +5,7 @@ public class NBody{
         double radius = in.readDouble();
         return radius;
     }
-    public static Planet[] readBodies(String file){
+    public static Planet[] readPlanets(String file){
         In in = new In(file);
         int num = in.readInt();
         in.readDouble();
@@ -22,7 +22,7 @@ public class NBody{
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
         double radius = readRadius(filename);
-        Planet[] planets = readBodies(filename);
+        Planet[] planets = readPlanets(filename);
         StdDraw.enableDoubleBuffering();
         StdDraw.setScale(-radius, radius);
         StdDraw.clear();
@@ -50,6 +50,12 @@ public class NBody{
             StdDraw.show();
             StdDraw.pause(10);
         }
-        StdDraw.pause(1000);
+        StdOut.printf("%d\n", planets.length);
+        StdOut.printf("%.2e\n", radius);
+        for (int i = 0; i < planets.length; i++) {
+            StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+                    planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
+                    planets[i].yyVel, planets[i].mass, planets[i].imgFileName);   
+}
     }
 }

@@ -2,7 +2,7 @@
  *  Tests Nbody.readBodies. Reads in ./data/planets.txt and checks output of
  *  readBodies().
  */
-public class TestReadBodies {
+public class TestReadPlanets {
 
     private static boolean doubleEquals(double actual, double expected, double eps) {
         if (Double.isNaN(actual) || Double.isInfinite(actual)) {
@@ -13,12 +13,12 @@ public class TestReadBodies {
     }
 
     /** Checks to make sure that readBodies() works perfectly. */
-    private static String checkReadBodys() {
-        System.out.println("Checking readBodies...");
+    private static String checkReadPlanets() {
+        System.out.println("Checking readplants...");
         String planetsTxtPath = "./data/planets.txt";
         /* If the following line fails to compile, you probably need to make
          * a certain method static! */
-        Planet[] actualOutput = NBody.readBodies(planetsTxtPath);
+        Planet[] actualOutput = NBody.readPlanets(planetsTxtPath);
 
         /* Check the simple things: */
         if (actualOutput == null) {
@@ -90,7 +90,7 @@ public class TestReadBodies {
     }
 
     public static void main(String[] args) {
-        String testResult = checkReadBodys();
+        String testResult = checkReadPlanets();
         System.out.println(testResult);
     }
 }
