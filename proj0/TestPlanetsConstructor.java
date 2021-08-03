@@ -1,7 +1,7 @@
 /**
  *  Tests the Body constructor.
  */
-public class TestBodyConstructor {
+public class TestPlanetsConstructor {
 
     /**
      *  Tests the Body constructor to make sure it's working correctly.
