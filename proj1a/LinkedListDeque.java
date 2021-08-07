@@ -84,6 +84,9 @@ public class LinkedListDeque<T> {
         size = 0;
     }
     public T removeFirst() {
+        if (isEmpty()) {
+            return null;
+        }
         if (size == 1) {
             T result = sentinel.next.val;
             delLLD();
@@ -97,6 +100,9 @@ public class LinkedListDeque<T> {
         }
     }
     public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
         if (size == 1) {
             T result = sentinel.prev.val;
             delLLD();
@@ -124,7 +130,7 @@ public class LinkedListDeque<T> {
             ptr = ptr.prev;
             while (endDistance != 0) {
                 ptr = ptr.prev;
-                endDistance -= endDistance;
+                endDistance -= 1;
             }
             return ptr.val;
         }

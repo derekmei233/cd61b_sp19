@@ -77,6 +77,9 @@ public class ArrayDeque<T> {
         end = begin + size;
     }
     public T removeFirst() {
+        if (isEmpty()) {
+            return null;
+        }
         T result = arrayT[begin];
         arrayT[begin] = null;
         begin = modHelper(begin + 1);
@@ -96,6 +99,9 @@ public class ArrayDeque<T> {
         size += 1;
     }
     public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
         T result = arrayT[modHelper(end - 1)];
         arrayT[modHelper(end - 1)] = null;
         end -= 1;

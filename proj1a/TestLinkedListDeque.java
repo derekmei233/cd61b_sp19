@@ -1,11 +1,11 @@
 public class TestLinkedListDeque {
-    public static void TestConstructers() {
-        LinkedListDeque<String> DDLD = new LinkedListDeque<>();
+    public static void testConstructers() {
+        LinkedListDeque<String> dDLD = new LinkedListDeque<>();
         System.out.println("finished default constructor");
-        LinkedListDeque<String> DDLT = new LinkedListDeque<>("first");
+        LinkedListDeque<String> dDLT = new LinkedListDeque<>("first");
         System.out.println("finished init_T constructor");
     }
-    public static void TestaddFirst() {
+    public static void testaddFirst() {
         LinkedListDeque<String> test1 = new LinkedListDeque<>();
         System.out.println("start addFirst");
         test1.addFirst("first");
@@ -13,7 +13,7 @@ public class TestLinkedListDeque {
         test1.addFirst("third");
         System.out.println("finished addFirst");
     }
-    public static void TestaddLast() {
+    public static void testaddLast() {
         System.out.println("start addLast");
         LinkedListDeque<String> test1 = new LinkedListDeque<>();
         test1.addLast("first");
@@ -21,7 +21,7 @@ public class TestLinkedListDeque {
         test1.addLast("third");
         System.out.println("finished addLast");
     }
-    public static void TestCopyConstructer() {
+    public static void testCopyConstructer() {
         System.out.println("start copy constructure");
         LinkedListDeque<String> source1 = new LinkedListDeque<>();
         LinkedListDeque<String> dest1 = new LinkedListDeque<>(source1);
@@ -38,7 +38,7 @@ public class TestLinkedListDeque {
         LinkedListDeque<String> dest3 = new LinkedListDeque<>(source3);
         System.out.println("finished copy constructure test3");
     }
-    public static void TestremoveFirst() {
+    public static void testremoveFirst() {
         System.out.println("start removeFirst test");
         LinkedListDeque<String> test1 = new LinkedListDeque<>("first");
         String result1 = test1.removeFirst();
@@ -56,7 +56,7 @@ public class TestLinkedListDeque {
         String result3 = test3.removeFirst();
         System.out.println("finished removeFirst test3");
     }
-    public static void TestremoveLast() {
+    public static void testremoveLast() {
         System.out.println("start removeLast test");
         LinkedListDeque<String> test1 = new LinkedListDeque<>("first");
         String result1 = test1.removeLast();
@@ -74,7 +74,7 @@ public class TestLinkedListDeque {
         String result3 = test3.removeLast();
         System.out.println("finished removeLast test3");
     }
-    public static void Testget() {
+    public static void testget() {
         System.out.println("start test get");
         LinkedListDeque<String> test1 = new LinkedListDeque<>("first");
         System.out.println(test1.get(0));
@@ -96,7 +96,7 @@ public class TestLinkedListDeque {
         test2.get(7);
         System.out.println("finished get test2");
     }
-    public static void TestgetRecursive(){
+    public static void testgetRecursive() {
         System.out.println("start test getRecursive");
         LinkedListDeque<String> test1 = new LinkedListDeque<>("first");
         System.out.println(test1.getRecursive(0));
@@ -118,7 +118,7 @@ public class TestLinkedListDeque {
         test2.getRecursive(7);
         System.out.println("finished getRecursive test2");
     }
-    public static void TestPrintDeque() {
+    public static void testPrintDeque() {
         System.out.println("start test printDeque");
         LinkedListDeque<String> test = new LinkedListDeque<>("0");
         test.addLast("1");
@@ -133,14 +133,14 @@ public class TestLinkedListDeque {
         System.out.println("finished test printDeque");
     }
     public static void main(String[] args) {
-        //TestConstructures();
-        //TestaddFirst();
-        //TestaddLast();
-        //TestCopyConstructer();
-        //TestremoveFirst();
-        //TestremoveLast();
-        //Testget();
-        //TestgetRecursive();
-        //TestPrintDeque();
+        testConstructers();
+        testaddFirst();
+        testaddLast();
+        testCopyConstructer();
+        testremoveFirst();
+        testremoveLast();
+        testget();
+        testgetRecursive();
+        testPrintDeque();
     }
 }
