@@ -5,81 +5,83 @@ public class ArrayDeque<T> {
     private int size;
     private T[] arrayT;
     private int begin;
+
+    /**
+     * end shoud be 1 greater than the position of last elements(cpp style)
+     */
     private int end;
     public ArrayDeque() {
         size = 0;
         arrayT = (T[]) new Object[initSize];
         begin = 0;
-        end = size - 1;
+        end = size;
     }
     public ArrayDeque(ArrayDeque other) {
-        T[] newAD = (T[]) new Object[size * RFactor];
+        T[] newAD = (T[]) new Object[other.arrayT.length];
         copyHelper(other, newAD);
         arrayT = newAD;
         size = other.size;
         begin = 0;
-        end = size - 1;
+        end = size;
     }
-    private void copyHelper(ArrayDeque source, T[] arrayT) {
-        if (source.begin > source.end ) {
-            System.arraycopy(source, source.begin, this, 0, source.arrayT.length - source.begin);
-            System.arraycopy(source, 0, this, source.arrayT.length - source.begin,
-                    source.size - source.arrayT.length + source.begin);
+    private void copyHelper(ArrayDeque source, T[] a) {
+        if (source.end <= source.arrayT.length) {
+            System.arraycopy(source.arrayT, source.begin, a, 0, source.end - source.begin);
         } else {
-            System.arraycopy(source, 0, this, 0, source.size);
+            System.arraycopy(source.arrayT, source.begin, a, 0, source.arrayT.length - source.begin);
+            System.arraycopy(source.arrayT, 0, a, source.arrayT.length - source.begin,
+                source.end - source.arrayT.length);
         }
     }
     /** still need attention */
     private void reSize(boolean inc) {
         if (inc) {
-            T[] newAD = (T[]) new Object[ size * RFactor];
+            T[] newAD = (T[]) new Object[ arrayT.length * RFactor];
             copyHelper(this, newAD);
             arrayT = newAD;
             begin = 0;
             end = size;
         } else {
-            T[] newAD = (T[]) new Object[ size / RRate_reci];
+            if ( arrayT.length == 8) {
+                return;
+            }
+            T[] newAD = (T[]) new Object[ arrayT.length / RRate_reci];
             copyHelper(this, newAD);
             arrayT = newAD;
             begin = 0;
             end = size;
         }
     }
-    public void setNewBegin(boolean inc){
-        if (begin == 0){
-            if (inc) {
-                begin = arrayT.length - 1;
-            } else {
-                begin = begin - 1;
-            }
-        } else if (begin == arrayT.length) {
-            if (inc) {
-                begin -= 1;
-            } else {
-                begin = 0;
-            }
+    /**
+     * discribe how begin and end pointer works here.
+     * rule1: begin < 0   ->   begin = arrayT.length - 1
+     * rule2: end = begin + size (cpp stryle)
+     * hint1: begin == end  -> empty or full -> then check size
+     * hint2: really index = pos - begin
+     */
+    private int modHelper(int x) {
+        if (x < 0) {
+            return x + arrayT.length;
         } else {
-            if (inc) {
-                begin -= 1;
-            } else {
-                begin += 1;
-            }
+            return x % arrayT.length;
         }
     }
     public void addFirst(T x) {
         if (size == arrayT.length) {
             reSize(true);
         }
-        setNewBegin(true);
+        begin = modHelper(begin - 1);
         arrayT[begin] = x;
         size += 1;
+        end = begin + size;
     }
     public T removeFirst() {
         T result = arrayT[begin];
         arrayT[begin] = null;
-        setNewBegin(false);
+        begin = modHelper(begin + 1);
         size -= 1;
-        if (arrayT.length / RRate_reci > size) {
+        end = begin + size;
+        if ( size < arrayT.length / RRate_reci) {
             reSize(false);
         }
         return result;
@@ -88,15 +90,18 @@ public class ArrayDeque<T> {
         if (size == arrayT.length) {
             reSize(true);
         }
-        size += 1;
         end += 1;
-        arrayT[end] = x;
+        arrayT[modHelper(end - 1)] = x;
+        size += 1;
     }
     public T removeLast() {
-        T result = arrayT[end];
-        arrayT[end] = null;
+        T result = arrayT[modHelper(end - 1)];
+        arrayT[modHelper(end - 1)] = null;
         end -= 1;
         size -= 1;
+        if (size < arrayT.length / RRate_reci) {
+            reSize(false);
+        }
         return result;
     }
     public int size() {
@@ -109,18 +114,8 @@ public class ArrayDeque<T> {
         return false;
     }
     public T get(int pos) {
-        if (begin > end) {
-            int app_pos = arrayT.length - begin - 1;
-            if (pos <= app_pos) {
-                pos = begin + pos;
-            } else {
-                pos = pos - app_pos - 1;
-            }
-            return arrayT[pos];
-        } else {
-            pos = pos + begin;
-            return arrayT[pos];
-        }
+        int realpos = modHelper(begin + pos);
+        return arrayT[realpos];
     }
     public void printDeque() {
         int pos = 0;
