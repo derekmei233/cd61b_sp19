@@ -57,11 +57,11 @@ public class ArrayDequeTest {
     }
 
     public static void main(String[] args) {
-        //TestConstructer();
-        //TestaddFirst();
-        //TestaddLast();
-        //TestcopyConstructer();
-        //TestremoveLast();
+        TestConstructer();
+        TestaddFirst();
+        TestaddLast();
+        TestcopyConstructer();
+        TestremoveLast();
         Testget();
     }
 }

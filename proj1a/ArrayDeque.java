@@ -1,7 +1,7 @@
 public class ArrayDeque<T> {
     private static int initSize = 8;
-    private static int RFactor = 2;
-    private static int RRate_reci = 4;
+    private static int rFactor = 2;
+    private static int rRateReci = 4;
     private int size;
     private T[] arrayT;
     private int begin;
@@ -28,7 +28,8 @@ public class ArrayDeque<T> {
         if (source.end <= source.arrayT.length) {
             System.arraycopy(source.arrayT, source.begin, a, 0, source.end - source.begin);
         } else {
-            System.arraycopy(source.arrayT, source.begin, a, 0, source.arrayT.length - source.begin);
+            System.arraycopy(source.arrayT, source.begin, a, 0,
+                    source.arrayT.length - source.begin);
             System.arraycopy(source.arrayT, 0, a, source.arrayT.length - source.begin,
                 source.end - source.arrayT.length);
         }
@@ -36,16 +37,16 @@ public class ArrayDeque<T> {
     /** still need attention */
     private void reSize(boolean inc) {
         if (inc) {
-            T[] newAD = (T[]) new Object[ arrayT.length * RFactor];
+            T[] newAD = (T[]) new Object[ arrayT.length * rFactor];
             copyHelper(this, newAD);
             arrayT = newAD;
             begin = 0;
             end = size;
         } else {
-            if ( arrayT.length == 8) {
+            if (arrayT.length == 8) {
                 return;
             }
-            T[] newAD = (T[]) new Object[ arrayT.length / RRate_reci];
+            T[] newAD = (T[]) new Object[ arrayT.length / rRateReci];
             copyHelper(this, newAD);
             arrayT = newAD;
             begin = 0;
@@ -81,7 +82,7 @@ public class ArrayDeque<T> {
         begin = modHelper(begin + 1);
         size -= 1;
         end = begin + size;
-        if ( size < arrayT.length / RRate_reci) {
+        if (size < arrayT.length / rRateReci) {
             reSize(false);
         }
         return result;
@@ -99,7 +100,7 @@ public class ArrayDeque<T> {
         arrayT[modHelper(end - 1)] = null;
         end -= 1;
         size -= 1;
-        if (size < arrayT.length / RRate_reci) {
+        if (size < arrayT.length / rRateReci) {
             reSize(false);
         }
         return result;
