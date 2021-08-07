@@ -16,7 +16,6 @@ public class ArrayDeque<T> {
         begin = 0;
         end = size;
     }
-    /**
     public ArrayDeque(ArrayDeque other) {
         T[] newAD = (T[]) new Object[other.arrayT.length];
         copyHelper(other, newAD);
@@ -25,7 +24,6 @@ public class ArrayDeque<T> {
         begin = 0;
         end = size;
     }
-    */
     private void copyHelper(ArrayDeque source, T[] a) {
         if (source.end <= source.arrayT.length) {
             System.arraycopy(source.arrayT, source.begin, a, 0, source.end - source.begin);

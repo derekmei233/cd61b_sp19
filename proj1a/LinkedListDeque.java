@@ -21,13 +21,11 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel.next;
         size += 1;
     }
-    /** 
     public LinkedListDeque(T x) {
         sentinel = new DNode(null, null, null);
         initLLD(x);
     }
-    */
-    /**
+
     public LinkedListDeque(LinkedListDeque other) {
         sentinel = new DNode(null, null, null);
         // don't assign size. because it will effect addLast method when taking size != 0.
@@ -44,7 +42,6 @@ public class LinkedListDeque<T> {
             }
         }
     }
-     */
     public void addFirst(T item) {
         if (isEmpty()) {
             initLLD(item);
