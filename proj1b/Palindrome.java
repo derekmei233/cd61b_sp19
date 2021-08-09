@@ -29,17 +29,11 @@ public class Palindrome {
         }
     }
     public boolean isPalindrome(String word) {
-        Deque<Character> dofCharacters = new ArrayDeque<>();
-        for (int i = 0; i < word.length(); i++) {
-            dofCharacters.addLast(word.charAt(i));
-        }
+        Deque<Character> dofCharacters = wordToDeque(word);
         return isPalindromeHelper(dofCharacters);
     }
     public boolean isPalindrome(String word, CharacterComparator cc) {
-        Deque<Character> dofCharacters = new ArrayDeque<>();
-        for (int i = 0; i < word.length(); i++) {
-            dofCharacters.addLast(word.charAt(i));
-        }
+        Deque<Character> dofCharacters = wordToDeque(word);
         return isPalindromeHelper(dofCharacters, cc);
     }
 }
