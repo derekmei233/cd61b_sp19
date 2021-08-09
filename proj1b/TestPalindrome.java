@@ -26,10 +26,10 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome(test3));
         String test4 = "pstsp";
         assertTrue(palindrome.isPalindrome(test4));
-        String Test5 = "asffsa";
-        assertTrue(palindrome.isPalindrome(Test5));
-        String Test6 = "asftqdatfsa";
-        assertFalse(palindrome.isPalindrome(Test6));
+        String test5 = "asffsa";
+        assertTrue(palindrome.isPalindrome(test5));
+        String test6 = "asftqdatfsa";
+        assertFalse(palindrome.isPalindrome(test6));
 
         OffByOne offbyone = new OffByOne();
         String test21 = "cat";
@@ -40,11 +40,11 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome(test23, offbyone));
         String test24 = "pstsp";
         assertFalse(palindrome.isPalindrome(test24, offbyone));
-        String Test25 = "asfetb";
-        assertTrue(palindrome.isPalindrome(Test25, offbyone));
-        String Test26 = "asftqdatfsa";
-        assertFalse(palindrome.isPalindrome(Test26, offbyone));
-        String Test27 = "aresbdatfsb";
-        assertTrue(palindrome.isPalindrome(Test27, offbyone));
+        String test25 = "asfetb";
+        assertTrue(palindrome.isPalindrome(test25, offbyone));
+        String test26 = "asftqdatfsa";
+        assertFalse(palindrome.isPalindrome(test26, offbyone));
+        String test27 = "aresbdatfsb";
+        assertTrue(palindrome.isPalindrome(test27, offbyone));
     }
 }

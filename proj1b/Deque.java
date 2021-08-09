@@ -1,13 +1,13 @@
 public interface Deque<Item> {
-    public void addFirst(Item x);
-    public void addLast(Item x);
-    public Item removeFirst();
-    public Item removeLast();
-    public Item get(int pos);
-    public Item getRecursive(int pos);
-    public int size();
+    void addFirst(Item x);
+    void addLast(Item x);
+    Item removeFirst();
+    Item removeLast();
+    Item get(int pos);
+    Item getRecursive(int pos);
+    int size();
 
-    default public boolean isEmpty() {
+    default boolean isEmpty() {
         return size() == 0;
     }
 }

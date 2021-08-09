@@ -58,7 +58,7 @@ public class LinkedListDeque<Item> implements Deque<Item> {
             return;
         } else {
             // ptr should point to its sentinel(other.sentinel) not this.sentinel
-            while ( ptr.getNext() != other.sentinel) {
+            while (ptr.getNext() != other.sentinel) {
                 addLast(ptr.getNext().getVal());
                 size += 1;
                 ptr = ptr.getNext();

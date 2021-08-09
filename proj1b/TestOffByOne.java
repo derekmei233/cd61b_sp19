@@ -5,7 +5,7 @@ public class TestOffByOne {
     // new ones, or the autograder might be upset.
     //static CharacterComparator offByOne = new OffByOne();
     // Your tests go here.
-    static OffByOne offbyone = new OffByOne();
+    static CharacterComparator offbyone = new OffByOne();
 
     @Test
     public void testequalChars() {
