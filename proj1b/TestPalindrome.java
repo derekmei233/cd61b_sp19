@@ -31,20 +31,19 @@ public class TestPalindrome {
         String test6 = "asftqdatfsa";
         assertFalse(palindrome.isPalindrome(test6));
 
-        OffByOne offbyone = new OffByOne();
         String test21 = "cat";
-        assertFalse(palindrome.isPalindrome(test21, offbyone));
+        assertFalse(palindrome.isPalindrome(test21, new OffByOne()));
         String test22 = "";
-        assertTrue(palindrome.isPalindrome(test22, offbyone));
+        assertTrue(palindrome.isPalindrome(test22, new OffByOne()));
         String test23 = "t";
-        assertTrue(palindrome.isPalindrome(test23, offbyone));
+        assertTrue(palindrome.isPalindrome(test23, new OffByOne()));
         String test24 = "pstsp";
-        assertFalse(palindrome.isPalindrome(test24, offbyone));
+        assertFalse(palindrome.isPalindrome(test24, new OffByOne()));
         String test25 = "asfetb";
-        assertTrue(palindrome.isPalindrome(test25, offbyone));
+        assertTrue(palindrome.isPalindrome(test25, new OffByOne()));
         String test26 = "asftqdatfsa";
-        assertFalse(palindrome.isPalindrome(test26, offbyone));
+        assertFalse(palindrome.isPalindrome(test26, new OffByOne()));
         String test27 = "aresbdatfsb";
-        assertTrue(palindrome.isPalindrome(test27, offbyone));
+        assertTrue(palindrome.isPalindrome(test27, new OffByOne()));
     }
 }
