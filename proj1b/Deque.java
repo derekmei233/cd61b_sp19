@@ -6,7 +6,7 @@ public interface Deque<Item> {
     Item get(int pos);
     Item getRecursive(int pos);
     int size();
-
+    void printDeque();
     default boolean isEmpty() {
         return size() == 0;
     }
