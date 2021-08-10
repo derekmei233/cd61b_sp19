@@ -29,5 +29,8 @@ public class TestOffByOne {
         char tp7 = '(';
         char tq7 = ')';
         assertTrue(offByOne .equalChars(tp7, tq7));
+        char tp8 = 't';
+        char tq8 = 'S';
+        assertFalse(offByOne .equalChars(tp8, tq8));
     }
 }
